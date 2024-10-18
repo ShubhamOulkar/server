@@ -6,6 +6,8 @@ const {
   storeInDb,
   updateCategory,
   deleteCategory,
+  connectMongo,
+  closeConnection,
 } = require("./db");
 const router = express.Router();
 
@@ -16,6 +18,15 @@ function validateRequest(body) {
 
   return schema.validate(body);
 }
+
+router.get("/", async (req, res) => {
+  await connectMongo(res);
+});
+
+router.get("/closeConnection", async (req, res) => {
+  await closeConnection();
+  res.send("atlas connection is closed");
+});
 
 router.get("/api/category", async (req, res) => {
   await getAllDocuments(res);

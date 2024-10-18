@@ -21,13 +21,17 @@ const dbSchema = {
   },
 };
 
-async function connectMongo() {
+async function connectMongo(res) {
   try {
     await client.connect();
-    console.log("client connected");
+    res.send("Mongo atlas connected.");
   } catch (err) {
-    console.error("client connection error:", err);
+    res.status(400).send("client connection error");
   }
+}
+
+async function closeConnection() {
+  await client.close();
 }
 
 async function createCollection(databaseName, collectionName) {
@@ -157,4 +161,5 @@ module.exports = {
   storeInDb: storeInDb,
   updateCategory: updateCategory,
   deleteCategory: deleteCategory,
+  closeConnection: closeConnection,
 };

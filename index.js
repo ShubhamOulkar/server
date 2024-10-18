@@ -8,8 +8,8 @@ app.use(morgan("tiny"));
 app.use(express.json());
 app.use(route);
 
-connectMongo();
-
 app.listen(port, () =>
-  console.log(`server is running on http://localhost:${port}`)
+  console.log(
+    `server is running on http://localhost:${port}, also open this url to start mongo client connection`
+  )
 );
