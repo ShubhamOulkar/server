@@ -1,0 +1,673 @@
+{
+	"info": {
+		"_postman_id": "5750a124-94b1-4514-a64b-94f2059972d0",
+		"name": "Learn platform api",
+		"description": "API endpoints for managing categories",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "26238267-5750a124-94b1-4514-a64b-94f2059972d0"
+	},
+	"item": [
+		{
+			"name": "/",
+			"item": [
+				{
+					"name": "Connect to MongoDB",
+					"id": "6f69bdf3-bfc6-4905-b23b-d532a0ee5685",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Establishes a connection to the MongoDB database."
+					},
+					"response": [
+						{
+							"id": "8fac8920-ba6e-4b90-959d-8d5aa8be7ab2",
+							"name": "Connected to MongoDB",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"id": "ee1ce95e-a1b1-4867-98cc-04d82ce92827"
+		},
+		{
+			"name": "closeConnection",
+			"item": [
+				{
+					"name": "Close MongoDB connection",
+					"id": "b81b3695-ef26-4123-84a8-32f9701ab92f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/closeConnection",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"closeConnection"
+							]
+						},
+						"description": "Closes the MongoDB connection."
+					},
+					"response": [
+						{
+							"id": "b515f337-5f49-48f4-949a-a2baa309017f",
+							"name": "MongoDB connection closed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/closeConnection",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"closeConnection"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"id": "4718e9f8-acd0-4466-a102-052f86af8532"
+		},
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "{name}",
+							"item": [
+								{
+									"name": "Retrieve a category by name",
+									"id": "09284ee4-baac-42f2-9e81-937a14d8c616",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/category/:name",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"category",
+												":name"
+											],
+											"variable": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "(Required) Category name"
+												}
+											]
+										},
+										"description": "Retrieves a category by its name."
+									},
+									"response": [
+										{
+											"id": "f9fdf3e1-70c6-45f9-a974-416d9c180f5f",
+											"name": "Successful response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/category/:name",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"category",
+														":name"
+													],
+													"variable": [
+														{
+															"key": "name"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "d25c00f0-fab5-4aed-a928-8ac972aa5eec"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"name\": \"<string>\"\n}"
+										},
+										{
+											"id": "cc92c9d9-5733-44d4-8ef6-0e9514e76664",
+											"name": "Category not found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/category/:name",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"category",
+														":name"
+													],
+													"variable": [
+														{
+															"key": "name"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": null
+										}
+									]
+								},
+								{
+									"name": "Update a category",
+									"id": "20714b38-eb97-474b-99ac-00b683822f92",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/category/:name",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"category",
+												":name"
+											],
+											"variable": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "(Required) Category name"
+												}
+											]
+										},
+										"description": "Updates an existing category."
+									},
+									"response": [
+										{
+											"id": "51702f95-f3ad-489a-a898-ce0b6bb81ce0",
+											"name": "Category updated successfully",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/category/:name",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"category",
+														":name"
+													],
+													"variable": [
+														{
+															"key": "name"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": null
+										},
+										{
+											"id": "25935fab-bb35-415d-bf72-6247c9ddf10e",
+											"name": "Category not found",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/category/:name",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"category",
+														":name"
+													],
+													"variable": [
+														{
+															"key": "name"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							],
+							"id": "c1bfc89d-b8d7-4c77-9878-f469a8092a6e"
+						},
+						{
+							"name": "delete",
+							"item": [
+								{
+									"name": "{name}",
+									"item": [
+										{
+											"name": "Delete a category",
+											"id": "e0ec6bb2-458e-477e-96fc-975161de7db7",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/category/delete/:name",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"category",
+														"delete",
+														":name"
+													],
+													"variable": [
+														{
+															"key": "name",
+															"value": "<string>",
+															"description": "(Required) Category name"
+														}
+													]
+												},
+												"description": "Deletes a category by its name."
+											},
+											"response": [
+												{
+													"id": "56dfc9ad-7d1b-4ba2-a22b-f13c549659bd",
+													"name": "Category deleted successfully",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/category/delete/:name",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"category",
+																"delete",
+																":name"
+															],
+															"variable": [
+																{
+																	"key": "name"
+																}
+															]
+														}
+													},
+													"status": "No Content",
+													"code": 204,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": null
+												},
+												{
+													"id": "4ab0c1c9-3999-41f8-9c82-22081c63feea",
+													"name": "Category not found",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/category/delete/:name",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"category",
+																"delete",
+																":name"
+															],
+															"variable": [
+																{
+																	"key": "name"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": null
+												}
+											]
+										}
+									],
+									"id": "56a804a1-c2c4-4681-b682-1f525038a1aa"
+								}
+							],
+							"id": "7eab2e09-10a1-423c-b454-b3a96f42f429"
+						},
+						{
+							"name": "Retrieve all categories",
+							"id": "e6470181-6c6c-4a86-b353-2e1a311ab560",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"category"
+									]
+								},
+								"description": "Retrieves a list of all categories."
+							},
+							"response": [
+								{
+									"id": "c4282ccb-4849-4a40-a309-76aa4d897764",
+									"name": "Successful response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/category",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"category"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "0608a083-cb83-4775-b712-2123bd4c25b3"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"name\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Create a new category",
+							"id": "c87c959f-573b-445f-94be-0d442c6b7818",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"category"
+									]
+								},
+								"description": "Creates a new category."
+							},
+							"response": [
+								{
+									"id": "ac6dc088-53ce-4332-a4c9-d3c3e9d860c3",
+									"name": "Category created successfully",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/category",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"category"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								},
+								{
+									"id": "e9045971-b338-4d22-9afb-a17c1a7f5213",
+									"name": "Invalid request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/category",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"category"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					],
+					"id": "49f3025e-96e1-4ab8-8910-6b7849f9a1de"
+				}
+			],
+			"id": "1268f6d5-2093-4d58-a340-5d97781185e2"
+		}
+	],
+	"variable": [
+		{
+			"id": "d97a0e91-d3f6-44a8-88c1-f9b921a60966",
+			"key": "baseUrl",
+			"value": "https://server-jdn8.onrender.com"
+		}
+	]
+}

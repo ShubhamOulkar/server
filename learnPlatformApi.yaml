@@ -1,0 +1,120 @@
+openapi: 3.0.2
+info:
+  title: Learn platform api
+  description: API endpoints for managing categories
+  version: 1.0.0
+servers:
+  - url: https://server-jdn8.onrender.com
+paths:
+  /:
+    get:
+      summary: Connect to MongoDB
+      description: Establishes a connection to the MongoDB database.
+      responses:
+        "200":
+          description: Connected to MongoDB
+  /closeConnection:
+    get:
+      summary: Close MongoDB connection
+      description: Closes the MongoDB connection.
+      responses:
+        "200":
+          description: MongoDB connection closed
+  /api/category:
+    get:
+      summary: Retrieve all categories
+      description: Retrieves a list of all categories.
+      operationId: getAllCategories
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+    post:
+      summary: Create a new category
+      description: Creates a new category.
+      operationId: createCategory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+      responses:
+        "201":
+          description: Category created successfully
+        "400":
+          description: Invalid request
+  /api/category/{name}:
+    get:
+      summary: Retrieve a category by name
+      description: Retrieves a category by its name.
+      operationId: getCategoryByName
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+          description: Category name
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        "404":
+          description: Category not found
+    put:
+      summary: Update a category
+      description: Updates an existing category.
+      operationId: updateCategory
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+          description: Category name
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+      responses:
+        "200":
+          description: Category updated successfully
+        "404":
+          description: Category not found
+  /api/category/delete/{name}:
+    delete:
+      summary: Delete a category
+      description: Deletes a category by its name.
+      operationId: deleteCategory
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+          description: Category name
+      responses:
+        "204":
+          description: Category deleted successfully
+        "404":
+          description: Category not found
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 3
+          description: Category name
