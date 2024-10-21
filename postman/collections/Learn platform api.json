@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "/",
+			"name": "connect mongo client",
 			"item": [
 				{
 					"name": "Connect to MongoDB",
@@ -32,8 +32,8 @@
 					},
 					"response": [
 						{
-							"id": "8fac8920-ba6e-4b90-959d-8d5aa8be7ab2",
-							"name": "Connected to MongoDB",
+							"id": "defa8d31-f5b8-4536-9fe5-fd7cdfece3e2",
+							"name": "Connect to MongoDB",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -49,10 +49,9 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [],
+							"_postman_previewlanguage": "Text",
 							"cookie": [],
-							"body": null
+							"body": "\"mongo client connected\""
 						}
 					]
 				}
@@ -104,7 +103,7 @@
 							"_postman_previewlanguage": "text",
 							"header": [],
 							"cookie": [],
-							"body": null
+							"body": "\"mongo client is closed\""
 						}
 					]
 				}
@@ -156,8 +155,8 @@
 									},
 									"response": [
 										{
-											"id": "f9fdf3e1-70c6-45f9-a974-416d9c180f5f",
-											"name": "Successful response",
+											"id": "063bfcc0-8d1b-4af5-b084-9144514b64c6",
+											"name": "Retrieve a category by name",
 											"originalRequest": {
 												"method": "GET",
 												"header": [
@@ -178,30 +177,29 @@
 													],
 													"variable": [
 														{
-															"key": "name"
+															"key": "name",
+															"value": "Python",
+															"description": "(Required) Category name"
 														}
 													]
 												}
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json",
-													"uuid": "d25c00f0-fab5-4aed-a928-8ac972aa5eec"
-												}
-											],
 											"cookie": [],
-											"body": "{\n  \"name\": \"<string>\"\n}"
+											"body": "{\r\n    \"id\" : 10,\r\n    \"name\" : \"Python\"\r\n}"
 										},
 										{
-											"id": "cc92c9d9-5733-44d4-8ef6-0e9514e76664",
-											"name": "Category not found",
+											"id": "960365c5-4e77-4134-b93f-b9428687c366",
+											"name": "category not found",
 											"originalRequest": {
 												"method": "GET",
-												"header": [],
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
 												"url": {
 													"raw": "{{baseUrl}}/api/category/:name",
 													"host": [
@@ -214,17 +212,17 @@
 													],
 													"variable": [
 														{
-															"key": "name"
+															"key": "name",
+															"value": "Cat",
+															"description": "(Required) Category name"
 														}
 													]
 												}
 											},
 											"status": "Not Found",
 											"code": 404,
-											"_postman_previewlanguage": "text",
-											"header": [],
 											"cookie": [],
-											"body": null
+											"body": "\"category not found\""
 										}
 									]
 								},
@@ -274,51 +272,6 @@
 									},
 									"response": [
 										{
-											"id": "51702f95-f3ad-489a-a898-ce0b6bb81ce0",
-											"name": "Category updated successfully",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"name\": \"<string>\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/api/category/:name",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"category",
-														":name"
-													],
-													"variable": [
-														{
-															"key": "name"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"body": null
-										},
-										{
 											"id": "25935fab-bb35-415d-bf72-6247c9ddf10e",
 											"name": "Category not found",
 											"originalRequest": {
@@ -331,7 +284,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"name\": \"<string>\"\n}",
+													"raw": "{\n  \"name\" : \"DBMS\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -351,7 +304,8 @@
 													],
 													"variable": [
 														{
-															"key": "name"
+															"key": "name",
+															"value": "Cat"
 														}
 													]
 												}
@@ -361,7 +315,62 @@
 											"_postman_previewlanguage": "text",
 											"header": [],
 											"cookie": [],
-											"body": null
+											"body": "\"Category Cat not found\""
+										},
+										{
+											"id": "d8c917b9-707b-4adf-8aa6-a57f57a7e6c7",
+											"name": "Update a category",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\" : \"DBMS\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/category/:name",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"category",
+														":name"
+													],
+													"variable": [
+														{
+															"key": "name",
+															"value": "Python",
+															"description": "(Required) Category name"
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"name": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												}
+											],
+											"cookie": [],
+											"body": "{\r\n    \"id\" : 10,\r\n    \"name\" : \"DBMS\"\r\n}"
 										}
 									]
 								}
@@ -406,37 +415,6 @@
 											},
 											"response": [
 												{
-													"id": "56dfc9ad-7d1b-4ba2-a22b-f13c549659bd",
-													"name": "Category deleted successfully",
-													"originalRequest": {
-														"method": "DELETE",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/api/category/delete/:name",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"api",
-																"category",
-																"delete",
-																":name"
-															],
-															"variable": [
-																{
-																	"key": "name"
-																}
-															]
-														}
-													},
-													"status": "No Content",
-													"code": 204,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"body": null
-												},
-												{
 													"id": "4ab0c1c9-3999-41f8-9c82-22081c63feea",
 													"name": "Category not found",
 													"originalRequest": {
@@ -455,7 +433,8 @@
 															],
 															"variable": [
 																{
-																	"key": "name"
+																	"key": "name",
+																	"value": "Python"
 																}
 															]
 														}
@@ -465,7 +444,38 @@
 													"_postman_previewlanguage": "text",
 													"header": [],
 													"cookie": [],
-													"body": null
+													"body": "\"Category not found\""
+												},
+												{
+													"id": "7d7e1367-094c-43f6-bce8-3665971bbf52",
+													"name": "Delete a category",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/category/delete/:name",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"category",
+																"delete",
+																":name"
+															],
+															"variable": [
+																{
+																	"key": "name",
+																	"value": "Python",
+																	"description": "(Required) Category name"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"cookie": [],
+													"body": "\"Python category deleted successfully\""
 												}
 											]
 										}
@@ -504,7 +514,41 @@
 							"response": [
 								{
 									"id": "c4282ccb-4849-4a40-a309-76aa4d897764",
-									"name": "Successful response",
+									"name": "unsuccessful response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/category",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"category"
+											]
+										}
+									},
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "0608a083-cb83-4775-b712-2123bd4c25b3"
+										}
+									],
+									"cookie": [],
+									"body": "\"Server is down\""
+								},
+								{
+									"id": "3166bbb9-5950-48af-a3cd-6ef37a74138b",
+									"name": "Retrieve all categories",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -530,12 +574,14 @@
 									"header": [
 										{
 											"key": "Content-Type",
+											"name": "Content-Type",
 											"value": "application/json",
-											"uuid": "0608a083-cb83-4775-b712-2123bd4c25b3"
+											"description": "",
+											"type": "text"
 										}
 									],
 									"cookie": [],
-									"body": "[\n  {\n    \"name\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\"\n  }\n]"
+									"body": "[\n    {\n        \"id\" : 10,\n        \"name\" : \"Python\"\n    }\n]"
 								}
 							]
 						},
@@ -577,45 +623,6 @@
 							},
 							"response": [
 								{
-									"id": "ac6dc088-53ce-4332-a4c9-d3c3e9d860c3",
-									"name": "Category created successfully",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"name\": \"<string>\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/category",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"category"
-											]
-										}
-									},
-									"status": "Created",
-									"code": 201,
-									"_postman_previewlanguage": "text",
-									"header": [],
-									"cookie": [],
-									"body": null
-								},
-								{
 									"id": "e9045971-b338-4d22-9afb-a17c1a7f5213",
 									"name": "Invalid request",
 									"originalRequest": {
@@ -628,7 +635,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"<string>\"\n}",
+											"raw": "{\n  \"name\": 10\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -649,10 +656,56 @@
 									},
 									"status": "Bad Request",
 									"code": 400,
-									"_postman_previewlanguage": "text",
-									"header": [],
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"name": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										}
+									],
 									"cookie": [],
-									"body": null
+									"body": "\"Name should be string.\""
+								},
+								{
+									"id": "1c26d917-859f-4aed-a60f-86d17c46ec90",
+									"name": "Create a new category",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"Python\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/category",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"category"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "Text",
+									"cookie": [],
+									"body": "{\r\n  \"id\" : 1 ,\r\n  \"name\": \"Python\"\r\n}"
 								}
 							]
 						}
@@ -663,11 +716,28 @@
 			"id": "1268f6d5-2093-4d58-a340-5d97781185e2"
 		}
 	],
-	"variable": [
+	"event": [
 		{
-			"id": "d97a0e91-d3f6-44a8-88c1-f9b921a60966",
-			"key": "baseUrl",
-			"value": "https://server-jdn8.onrender.com"
+			"listen": "prerequest",
+			"script": {
+				"id": "6682d971-74ba-45d1-9eba-39bfa4ce9e13",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "db9243a3-9360-4e4f-a32f-6b2620c0fb3f",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
